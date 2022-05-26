@@ -11,6 +11,8 @@
 		F1E10A83283FC5F200427591 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E10A82283FC5F200427591 /* ContentView.swift */; };
 		F1E10A85283FC5F500427591 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E10A84283FC5F500427591 /* Assets.xcassets */; };
 		F1E10A88283FC5F500427591 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E10A87283FC5F500427591 /* Preview Assets.xcassets */; };
+		F1E10A90283FC82900427591 /* TestPackage in Resources */ = {isa = PBXBuildFile; fileRef = F1E10A8F283FC82900427591 /* TestPackage */; };
+		F1E10A93283FC84300427591 /* TestPackage in Frameworks */ = {isa = PBXBuildFile; productRef = F1E10A92283FC84300427591 /* TestPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,7 @@
 		F1E10A82283FC5F200427591 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F1E10A84283FC5F500427591 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1E10A87283FC5F500427591 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F1E10A8F283FC82900427591 /* TestPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TestPackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E10A93283FC84300427591 /* TestPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +41,7 @@
 			children = (
 				F1E10A7F283FC5F200427591 /* CacheTest */,
 				F1E10A7E283FC5F200427591 /* Products */,
+				F1E10A91283FC84300427591 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,6 +56,7 @@
 		F1E10A7F283FC5F200427591 /* CacheTest */ = {
 			isa = PBXGroup;
 			children = (
+				F1E10A8E283FC82900427591 /* Packages */,
 				F1E10A80283FC5F200427591 /* CacheTestApp.swift */,
 				F1E10A82283FC5F200427591 /* ContentView.swift */,
 				F1E10A84283FC5F500427591 /* Assets.xcassets */,
@@ -67,6 +73,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F1E10A8E283FC82900427591 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				F1E10A8F283FC82900427591 /* TestPackage */,
+			);
+			path = Packages;
+			sourceTree = SOURCE_ROOT;
+		};
+		F1E10A91283FC84300427591 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,15 +95,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E10A8B283FC5F500427591 /* Build configuration list for PBXNativeTarget "CacheTest" */;
 			buildPhases = (
+				A33AACE13C3D2D276D665E3D /* [RC] RemoteCache_prebuild */,
 				F1E10A79283FC5F200427591 /* Sources */,
 				F1E10A7A283FC5F200427591 /* Frameworks */,
 				F1E10A7B283FC5F200427591 /* Resources */,
+				81DE95EE82BE544CBD62C96B /* [RC] RemoteCache_postbuild */,
+				3D24F0D94BE413E1A9AAE253 /* [RC] RemoteCache_mark */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CacheTest;
+			packageProductDependencies = (
+				F1E10A92283FC84300427591 /* TestPackage */,
+			);
 			productName = CacheTest;
 			productReference = F1E10A7D283FC5F200427591 /* CacheTest.app */;
 			productType = "com.apple.product-type.application";
@@ -127,10 +154,64 @@
 			files = (
 				F1E10A88283FC5F500427591 /* Preview Assets.xcassets in Resources */,
 				F1E10A85283FC5F500427591 /* Assets.xcassets in Resources */,
+				F1E10A90283FC82900427591 /* TestPackage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D24F0D94BE413E1A9AAE253 /* [RC] RemoteCache_mark */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				/Users/romanesin/XcodeProjects/CacheTest/xcremotecache/xcprepare,
+			);
+			name = "[RC] RemoteCache_mark";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SCRIPT_INPUT_FILE_0\" mark --configuration \"$CONFIGURATION\" --platform \"$PLATFORM_NAME\"";
+		};
+		81DE95EE82BE544CBD62C96B /* [RC] RemoteCache_postbuild */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			dependencyFile = "$(TARGET_TEMP_DIR)/postbuild.d";
+			files = (
+			);
+			inputPaths = (
+				/Users/romanesin/XcodeProjects/CacheTest/xcremotecache/xcpostbuild,
+			);
+			name = "[RC] RemoteCache_postbuild";
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(MODULES_FOLDER_PATH)/$(PRODUCT_MODULE_NAME).swiftmodule/$(XCRC_PLATFORM_PREFERRED_ARCH).swiftmodule.md5",
+				"$(TARGET_BUILD_DIR)/$(MODULES_FOLDER_PATH)/$(PRODUCT_MODULE_NAME).swiftmodule/$(XCRC_PLATFORM_PREFERRED_ARCH)-$(LLVM_TARGET_TRIPLE_VENDOR)-$(SWIFT_PLATFORM_TARGET_PREFIX)$(LLVM_TARGET_TRIPLE_SUFFIX).swiftmodule.md5",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SCRIPT_INPUT_FILE_0\"";
+		};
+		A33AACE13C3D2D276D665E3D /* [RC] RemoteCache_prebuild */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			dependencyFile = "$(TARGET_TEMP_DIR)/prebuild.d";
+			files = (
+			);
+			inputPaths = (
+				/Users/romanesin/XcodeProjects/CacheTest/xcremotecache/xcprebuild,
+			);
+			name = "[RC] RemoteCache_prebuild";
+			outputPaths = (
+				"$(TARGET_TEMP_DIR)/rc.enabled",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SCRIPT_INPUT_FILE_0\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F1E10A79283FC5F200427591 /* Sources */ = {
@@ -282,11 +363,16 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_CFLAGS = "$(inherited) -fdebug-prefix-map=/Users/romanesin/XcodeProjects/CacheTest=$(XCRC_FAKE_SRCROOT)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -debug-prefix-map /Users/romanesin/XcodeProjects/CacheTest=$(XCRC_FAKE_SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.romanesin.CacheTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_EXEC = /Users/romanesin/XcodeProjects/CacheTest/xcremotecache/xcswiftc;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				XCRC_FAKE_SRCROOT = /xxxxxxxxxx;
+				XCRC_PLATFORM_PREFERRED_ARCH = "$(LINK_FILE_LIST_$(CURRENT_VARIANT)_$(PLATFORM_PREFERRED_ARCH):dir:standardizepath:file:default=arm64)";
 			};
 			name = Debug;
 		};
@@ -341,6 +427,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1E10A92283FC84300427591 /* TestPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TestPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1E10A75283FC5F200427591 /* Project object */;
 }
